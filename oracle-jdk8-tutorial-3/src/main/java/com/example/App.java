@@ -184,6 +184,193 @@ public class App {
 
 		}
 		System.out.println(sbuilder);
-	}
 
+		/*
+		 * Metodos mas utilizados de la clase String, que son validos, en su mayoria,
+		 * para la clase StringBuilder tambien
+		 */
+
+		String sampleCadena = "Yodalis Ninoska Grillo";
+		// Metodo que recupera la cantidad de caracteres de la variable, u objeto,
+		// de tipo String
+
+		int totalCaracteres = sampleCadena.length();
+
+		System.out.println("Total de caracteres de la variable es: " + totalCaracteres);
+
+		// Recupera el caracter en una posicion concreta de la cadena
+		char result2 = sampleCadena.charAt(0);
+
+		System.out.println("En el indice 0 esta el caracter: " + result2);
+
+		// Busca la ocurrencia de una cadena de caracteres o un caracter simple
+		// y devuelve el indice de la posicion donde ha sido encontrado o -1
+		// si no lo ha encontrado
+
+		String cadenaABuscar = "noska";
+
+		if (sampleCadena.indexOf(cadenaABuscar) != -1)
+			System.out.println("Se ha encontrado la cadena a buscar");
+		else
+			System.out.println("No se ha encontrado la cadena a buscar");
+
+		/*
+		 * Ejercicio # 1 del Miercoles 10 de Junio. Modificar el codigo anterior para si
+		 * la cadena ha sido encotrada que se muestre la posicion, o indice, donde ha
+		 * sido encontrada
+		 */
+
+		String cadenaABuscar2 = "noska";
+		int indiceEncontrado = sampleCadena.indexOf(cadenaABuscar2);
+
+		if (sampleCadena.indexOf(cadenaABuscar) != -1)
+			System.out.println("Se ha encontrado la cadena a buscar en el indice: " + indiceEncontrado);
+		else
+			System.out.println("No se ha encontrado la cadena a buscar");
+
+		// Recupera una parte de la cadena que va desde un indice inicial hasta un valor
+		// de un indice o posicion final
+
+		String subCadena = sampleCadena.substring(12, 19);
+
+		System.out.println("Subcadena resultante del metodo substring: " + subCadena);
+
+		// Convertir a mayusculas
+
+		System.out.println(sampleCadena.toUpperCase());
+
+		// Convertir a minusculas
+
+		System.out.println(sampleCadena.toLowerCase());
+
+		/*
+		 * Ejercicio # 2.
+		 * 
+		 * Buscar la posicion de la cadena grillo en la cadena sampleCadena, realizando
+		 * una busqueda case insensitive (insensible a las mayusculas o minusculas), y
+		 * mostrar la posicion en la cual ha sido encontrada si es par, de lo contrario
+		 * no mostrar nada
+		 */
+
+		System.out.println("Ejercicio # 2");
+		String cadenaABuscar3 = "gRiLlo";
+		int indiceEncontrado2 = sampleCadena.toLowerCase().indexOf(cadenaABuscar3.toLowerCase());
+
+		if (indiceEncontrado2 != -1 && indiceEncontrado2 % 2 == 0) {
+			System.out.println("Se ha encontrado la cadena a buscar en el indice: " + indiceEncontrado2);
+
+		}
+		// Metodo equals que comprueba si el contenido de dos objetos de tipo String
+		// o de cualquier otro tipo, son iguales
+
+		// Un literal de tipo String se crea en zona de la memoria reservada
+		// especialmente para ello, denominada String Pool
+
+		String literalDeCadena1 = "Hola";
+
+		// Los literales de cadena la maquina virtual de Java comprueba si ya estan
+		// en el String Pool y si es asi, no crea un nuevo literal de cadena, sino
+		// que reutiliza el que ya existe, por lo cual a literalDeCadena2 se
+		// le ha asignado el mismo valor que a literalDeCadena1 porque la cadena "Hola"
+		// ya existia en el String Pool
+
+		String literalDeCadena2 = "Hola";
+
+		if (literalDeCadena1 == literalDeCadena2) {
+			System.out.println("Verdadero");
+		} else {
+			System.out.println("Falso");
+		}
+
+		// La variable siguiente se crea en otra zona que no es el String Pool, sino
+		// en una zona de la memoria denominada el Heap, es decir, donde se crean
+		// las variables dinamicas
+		String obj2 = new String("Hola");
+		String obj3 = new String("hola");
+
+		if (obj2.equals(obj3)) {
+			System.out.println("El contenido de los objtos obj2 y obj3 son iguales");
+		} else {
+			System.out.println("Son diferentes ");
+			/*
+			 * Si quieres el contenido de dos objetos de tipo String independientemente de
+			 * las mayusculas y minusculas que tengan hay que utilizar el metodo
+			 * equalsIgnoreCase
+			 */
+
+			if (obj2.equalsIgnoreCase(obj3)) {
+				System.out.println("El contenido de los objetos obj2 y obj3 son iguales");
+			} else {
+				System.out.println("Son diferentes ");
+
+			}
+
+		}
+
+		/*
+		 * Comprueba que la primera letra o caracter de una cadena sea el especificado
+		 */
+
+		if (sampleCadena.startsWith("Y"))
+			System.out.println("Si, comienza con la letra Y");
+		else {
+			System.out.println("No, no comienza con la letra Y");
+		}
+
+		// Existe tambien el metodo endsWith()
+
+		/* Comprueba si una cadena contiena a otra subcadena */
+
+		if (sampleCadena.contains("grillo"))
+			System.out.println("Si, la contiene");
+		else
+			System.out.println("No la contiene");
+
+		
+		// Metodo que substituye partes de una cadena. 
+		// Como ejemplo en la cadena sampleCadena substituir 123 por nada
+		// y mostrar la cadena antes y despues de la substitucion
+	
+		System.out.println("Cadena original: " + sampleCadena);
+
+		sampleCadena.replace("123", "");
+
+		// ¿Deberia mostrarse "Yodalis $ @ Ninoska Grillo" ?
+		System.out.println("Cadena despues de eliminar 123 " + sampleCadena );
+	
+		
+		/* Los metodos siguientes, historicamente, tienden a confundir.
+		* 
+		* isEmpty() y isBlank() */
+		
+		String sampleString = "";
+
+		String result4 = sampleString.isEmpty() ? "Si, esta vacia" : "No, no esta vacia";
+
+		System.out.println("Resultado de la llamada al metodo isEmpty() : " + result4);
+	
+		/* El metodo isEmpty() devuelve un valor verdadero si y solo si la cantidad de 
+		* elementos de la cadena es cero, es decir, si el resultado del metodo length()
+		* sobre la cadena es cero */
+
+		/* Entre utilizar el operador de suma (+) y el metodo concat() es preferible el 
+		* operador + porque esta optimizado para en las operaciones de concatenacion de 
+		* cadenas de caracteres, cambiar los operandos a StringBuilder */
+	
+		/* El metodo isBlank() devuelve verdadero (true) al igual que el metodo isEmpty(),
+		* en el caso que la cadena tenga longitud cero, es decir, cero caracteres.
+		* 
+		* y, ademas, el metodo isBlank() devuelve true cuando la cadena solamente este 
+		* formada por espacios en blanco */
+
+		String sampleString2 = " ";
+
+		// Para la cadena anterior, el metodo isEmpty() retorna false, mientras que el metodo
+		// isBlank retorna verdadero
+
+		System.out.println(sampleString2.isEmpty()); // false
+		System.out.println(sampleString2.isBlank()); // true
+		
+		
+	}
 }
